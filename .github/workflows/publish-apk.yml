@@ -1,0 +1,37 @@
+name: Publish Neon District APK
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/publish-apk.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out release repository
+        uses: actions/checkout@v5
+
+      - name: Download and verify APK
+        env:
+          APK_SOURCE_URL: 'https://sdmntpreastus.oaiusercontent.com/files/00000000-12e0-81f9-bee8-3d0e26404e09/raw?se=2026-08-01T22:31:05Z&sp=r&sv=2026-02-06&sr=b&scid=4aa35ad6-ace7-430d-ab0a-4f07aa2bf2f6&skoid=d1cabc79-3240-4866-94fe-6005330cb49e&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-08-01T14:27:52Z&ske=2026-08-02T14:27:52Z&sks=b&skv=2026-02-06&sig=0M3H7v27IKLcYP9BBp6O/f2LLpv%2BJ0kHyySXfRwhz8w%3D'
+          APK_SHA256: f6acb0379e4bd4c6e40e600c94d46d5d07a9f8a44c6547fddf4551ea1e9b00e2
+        run: |
+          curl -L --fail --retry 3 "$APK_SOURCE_URL" -o /tmp/NeonDistrict-APK.zip
+          unzip -o /tmp/NeonDistrict-APK.zip NeonDistrict.apk
+          echo "$APK_SHA256  NeonDistrict.apk" | sha256sum -c -
+
+      - name: Publish permanent APK
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- NeonDistrict.apk
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Publish Neon District 0.1.1 APK"
+          git push origin HEAD:main
