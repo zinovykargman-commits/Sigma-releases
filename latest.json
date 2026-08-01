@@ -1,6 +1,6 @@
 {
-  "version_code": 2,
-  "version_name": "0.1.1",
+  "version_code": 3,
+  "version_name": "0.1.2",
   "apk_url": "https://raw.githubusercontent.com/zinovykargman-commits/Sigma-releases/main/NeonDistrict.apk",
-  "notes": "First Android test build with the connected in-app updater."
+  "notes": "Updater pipeline verification build. The opening screen shows UPDATE PIPELINE VERIFIED."
 }
