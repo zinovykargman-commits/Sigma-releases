@@ -1,7 +1,7 @@
 {
-  "version_code": 10,
-  "version_name": "0.4.0",
-  "apk_url": "https://raw.githubusercontent.com/zinovykargman-commits/Sigma-releases/main/NeonDistrict.apk?v=0.4.0",
-  "sha256": "c41820bc2fd81b8e56d89f4578655b4bdc99cc61ff8b05ee3b5f62317fe2e52d",
-  "notes": "Living City update: 300 persistent citizens, five broad corporations with 280 competitive positions, 200 weekly part-time shifts, tiered apartment rents, role-based income, a capped money-supply ledger, an authored 100-building city, and tappable cutaway interiors. Existing 250-citizen saves are backed up and preserved during migration."
+  "version_code": 11,
+  "version_name": "0.4.1",
+  "apk_url": "https://raw.githubusercontent.com/zinovykargman-commits/Sigma-releases/main/NeonDistrict.apk?v=0.4.1",
+  "sha256": "a3f840d8164ea44be98ae2e658855ed8d08a84cb849cb50e9cf9bc043dcdffd0",
+  "notes": "Hotfix: restores startup after the v0.4.0 blank-screen failure, keeps building cutaways and indoor citizen selection visible, fixes the bottom economy status panel, and raises each corporate building to 60-person capacity. The release passed a clean Godot boot, automated interaction checks, and manual review of four 1920x1080 screenshots. Existing saves, package identity, and signing identity are preserved."
 }
