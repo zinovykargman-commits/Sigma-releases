@@ -1,7 +1,7 @@
 {
-  "version_code": 6,
-  "version_name": "0.2.1",
-  "apk_url": "https://raw.githubusercontent.com/zinovykargman-commits/Sigma-releases/main/NeonDistrict.apk?v=0.2.1",
-  "sha256": "7ce59bb2831b88b820afa844ebab87bdcba97f8fbf0a01332b2d476f23dd27ae",
-  "notes": "Fix Android HUD buttons and keep commuters on road routes. Existing city saves are preserved."
+  "version_code": 7,
+  "version_name": "0.3.0",
+  "apk_url": "https://raw.githubusercontent.com/zinovykargman-commits/Sigma-releases/main/NeonDistrict.apk?v=0.3.0",
+  "sha256": "ad6de691ddbec55b0ea03e8fa8eda962bc3941b564b939881820ce551c6bdc93",
+  "notes": "City-life and graphics update: 100 named buildings, homes, jobs, shifts, expanded needs, animated citizens, traffic, weather, and day/night lighting. Existing saves are preserved."
 }
