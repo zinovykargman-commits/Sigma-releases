@@ -15,17 +15,19 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     env:
-      APK_SHA256: 2d094d37ba5f61104c12cea175af574333d233d3a8cd6c165948486eddfc0e68
+      APK_SHA256: 6a46119363504bfd6a000e8417ded6e2a44db50bbe0b24793e6d4a399c220ded
+      CHUNK_SHAS: >-
+        25507119c12a3e35c2903ecd20d835ca86affae8 1247f793d9429bb404f7b3be8b2ad7e4ab8df5bd 88ce4a16dedf31ab445f7e44d0c6f3b9b52f918c 8310429438e799042d21b959db269679d4bc0394 2e0bb0038385289d76d5e3f06e102f56decc658a a8f64aa446160a314747dc66e24ad13a098aa941 f28f6f68c349cd63f0c757f4fd5af10a0c20b1b5 a628f260b04a5d9e4bdf5134e5710cebee4ceaad b0d47f109c7e10556a009b9eaaf2b8c47634ee3d d5ab38e092c257deb6adf14f5a9214ebdc48eac7 8fa1bfa8c61d64dfb014f211ef2c8475007876dd a4b40713f93f1e23a521f7a9930e99b7952e2935 b2294ecfd9b5c93162badf6165934d18e59767d6 e199d04bcccf8a174e690be093709d29086df0cd 0e03d9abcc54d0db678c40018fac31daadc80e78 452282cc274208c537b19b9dcc7f8a84ee119db9 298216d78e55b3cb629b8c61555d22ddd3decab4 7750e65a68577e75d3b984a0d4629ba104dd118c 024da969eceea6a0ff1e7ac0d39fe880e3884a07 1539ba0c453da0672402d40414b8d544ccecd6d0 73793088ff6f4b532008290583702ab199501a41 e1ce948790ba436a5ff6f4675f84bf3fee92f73b 8f11b352c2943faca1f5c0ab97a60505cf86e960 4b2c18b3d378f1c39a9758271df979cf93a0ba9d 3551e02978325774126883be73fc19f8aa30fa46 bd963876fac59429fe6ef5a1482edb1cc938463f 8703c7083467a8d2c5a220f27ffdf432a18d4e18 6ce62e67d62ec74ef95bc68bd1b20a39123a76cd 8a56e254761786d6a3bf3905cd934f60f729a816 68dee4bb9b7ef193885c3cfaced7f55d868bbdd5 ee0a4a99bc84c0cf83a7832c7b3fbcb1e87f6b56 b7458f151fcac2a2336c6100e224f8363e5dda14 3dd3f7af8c144a4b128de5b657b38c658e62f23a 515fc94fa5a9dff7588d937d5590969d5e04fea7 8af3783962e3bfcb5291ddc086666426c9cd7489 12acdb067cb9f50ab777f9915cedf241a397cd26 5d78f230f0de9ec81e5bb9e818b2bf8824f3aaf9
     steps:
       - name: Check out release repository
         uses: actions/checkout@v5
 
-      - name: Reassemble and verify signed v0.3.1
+      - name: Reassemble and verify signed v0.3.2
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           : > NeonDistrict.apk
-          for sha in e42713ab1a51b52752d47129cdf7f51a5f9210fd c83664de0680d8c299208f6c6ab3e54724f4e308 4db638c2c8af4a3af49d0bd942dd1b643aec74d1 69cbad290fc8acdcb228a49c7f158be1ad8a33f1 d1f3f2b2e7c0138d5a6eeda91ef9040d218b06ff fb91b4627ea1f2997e99145936fd0eef313c5425 356c60e8c83b6ce79d4a04b2c126ab232bdac390 fc4a531ec972436dd96907b789aa12f6414e8802 835473dfcfc81af349283a9f131fd793be325869 d0045db6bbd8211414de6a774e0aeba698e284a3 70f25129d32601ed9aeb1c0b602a9bf5c5fbb8fa 02b41472260b164fbc24b576860a14b366ad644b e10acebca8f2b4d63272921015dec4e0db0ce773 4609fd036d2cd53e890649d4badebccbf8997330 b0f07a7bef0f47372dcd8a57630b832eb3655258 cec878713e2e4b53f55c56fa9d997741c9d6c66d 02ddfabd4787d203e2ed5ffc2d028090844da8f3 fec933280f19b6a5149755f84e183d0213d82c73 c7fc7ac3048001a5177141565535c563fd0ce322 704fc84db5216d976cd87881a5569f2c096d89fe c11330059c61a30ee7a0718f4901d75fcd30dd43 b19dfda9a41a635171190081057b6887d951cbd8 93939b5b6847433eb0e155f9e128748342d451cf 7d7f1939d9b753f7374d9ca0ec6510c20f7a7dd2 f414b6e9324efa68814da408995d24a0caa050b6 e0b81599acb05646894773c6fb07b786e7eba31b d86d5fd570c5d0c4e11569f62ef2e7caa53257ca 419ee5d912c38f5870867f456c4287ff2007411a 1e932e3846376afd7c32c6c4fa24d5df6934cb59 c80e1e309c02c46768b6045d46eb6901d17099ed 8e420f25ffb21222b4a21ec6fde107a8efa80af0 fc1e9cee52ce5d25f0ca25acbc6a608629cab255 ca1af5ab60ce3b30806361aeb0aeeaff63717978 bfac89198cde0d9503be51c62f82c75b32c6af3d 37dc5e9e941f474c509855bc325e6181b0b54ed4 95c4e6d456711add3ea23c1917a77f8a779acc46 8f79c81401008bf58ec902c236ecd3aee035396e f21f6264e828b62e26729b589b59a415cb16688f 2fb39b617d6efbfef7e94963bcbb3634fd1b231b; do
+          for sha in $CHUNK_SHAS; do
             curl -fsSL \
               -H "Accept: application/vnd.github+json" \
               -H "Authorization: Bearer $GH_TOKEN" \
@@ -39,18 +41,18 @@ jobs:
       - name: Publish APK and activate update
         run: |
           jq -n \
-            --arg apk_url "https://raw.githubusercontent.com/zinovykargman-commits/Sigma-releases/main/NeonDistrict.apk?v=0.3.1" \
+            --arg apk_url "https://raw.githubusercontent.com/zinovykargman-commits/Sigma-releases/main/NeonDistrict.apk?v=0.3.2" \
             --arg sha256 "$APK_SHA256" \
             '{
-              version_code: 8,
-              version_name: "0.3.1",
+              version_code: 9,
+              version_name: "0.3.2",
               apk_url: $apk_url,
               sha256: $sha256,
-              notes: "Hotfix: restores correct building placement across the full city, keeps the updater version synchronized, and adds release-blocking layout/version checks. Existing saves are preserved."
+              notes: "Modular architecture update: real building entry and exit, indoor occupancy, road-safe door routing, save migration, and expanded regression checks. Existing saves are preserved."
             }' > latest.json
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -- NeonDistrict.apk latest.json
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "Publish and activate Neon District 0.3.1"
+          git commit -m "Publish and activate Neon District 0.3.2"
           git push origin HEAD:main
