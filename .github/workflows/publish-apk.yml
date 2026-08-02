@@ -15,35 +15,82 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     env:
-      APK_ARCHIVE_URL: 'https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-c91c-822f-bbbc-5ae534729095/raw?se=2026-08-02T01:47:15Z&sp=r&sv=2026-02-06&sr=b&scid=3e229f2f-0773-4e3a-b8c5-7a7e8b447279&skoid=bbd22fc4-f881-4ea4-b2f3-c12033cf6a8b&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-08-01T13:12:10Z&ske=2026-08-02T13:12:10Z&sks=b&skv=2026-02-06&sig=B8UwQrmkaM%2BG5hbem10%2BfRUe%2BbuYT/zsGx6%2B%2B5Rfv58%3D'
-      APK_ARCHIVE_SHA256: daad4e2fc2ac0690619c9c3f67b8e00176eeed060281139691faa6f0a4d22c75
-      APK_SHA256: ad6de691ddbec55b0ea03e8fa8eda962bc3941b564b939881820ce551c6bdc93
+      APK_SHA256: 2d094d37ba5f61104c12cea175af574333d233d3a8cd6c165948486eddfc0e68
     steps:
       - name: Check out release repository
         uses: actions/checkout@v5
 
-      - name: Download and verify signed v0.3.0
+      - name: Reassemble and verify signed v0.3.1
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          curl -L --fail --retry 3 "$APK_ARCHIVE_URL" -o /tmp/NeonDistrict-v0.3.0.zip
-          echo "$APK_ARCHIVE_SHA256  /tmp/NeonDistrict-v0.3.0.zip" | sha256sum -c -
-          unzip -o /tmp/NeonDistrict-v0.3.0.zip NeonDistrict.apk
+          : > NeonDistrict.apk
+          for sha in \
+            e42713ab1a51b52752d47129cdf7f51a5f9210fd
+            c83664de0680d8c299208f6c6ab3e54724f4e308
+            4db638c2c8af4a3af49d0bd942dd1b643aec74d1
+            69cbad290fc8acdcb228a49c7f158be1ad8a33f1
+            d1f3f2b2e7c0138d5a6eeda91ef9040d218b06ff
+            fb91b4627ea1f2997e99145936fd0eef313c5425
+            356c60e8c83b6ce79d4a04b2c126ab232bdac390
+            fc4a531ec972436dd96907b789aa12f6414e8802
+            835473dfcfc81af349283a9f131fd793be325869
+            d0045db6bbd8211414de6a774e0aeba698e284a3
+            70f25129d32601ed9aeb1c0b602a9bf5c5fbb8fa
+            02b41472260b164fbc24b576860a14b366ad644b
+            e10acebca8f2b4d63272921015dec4e0db0ce773
+            4609fd036d2cd53e890649d4badebccbf8997330
+            b0f07a7bef0f47372dcd8a57630b832eb3655258
+            cec878713e2e4b53f55c56fa9d997741c9d6c66d
+            02ddfabd4787d203e2ed5ffc2d028090844da8f3
+            fec933280f19b6a5149755f84e183d0213d82c73
+            c7fc7ac3048001a5177141565535c563fd0ce322
+            704fc84db5216d976cd87881a5569f2c096d89fe
+            c11330059c61a30ee7a0718f4901d75fcd30dd43
+            b19dfda9a41a635171190081057b6887d951cbd8
+            93939b5b6847433eb0e155f9e128748342d451cf
+            7d7f1939d9b753f7374d9ca0ec6510c20f7a7dd2
+            f414b6e9324efa68814da408995d24a0caa050b6
+            e0b81599acb05646894773c6fb07b786e7eba31b
+            d86d5fd570c5d0c4e11569f62ef2e7caa53257ca
+            419ee5d912c38f5870867f456c4287ff2007411a
+            1e932e3846376afd7c32c6c4fa24d5df6934cb59
+            c80e1e309c02c46768b6045d46eb6901d17099ed
+            8e420f25ffb21222b4a21ec6fde107a8efa80af0
+            fc1e9cee52ce5d25f0ca25acbc6a608629cab255
+            ca1af5ab60ce3b30806361aeb0aeeaff63717978
+            bfac89198cde0d9503be51c62f82c75b32c6af3d
+            37dc5e9e941f474c509855bc325e6181b0b54ed4
+            95c4e6d456711add3ea23c1917a77f8a779acc46
+            8f79c81401008bf58ec902c236ecd3aee035396e
+            f21f6264e828b62e26729b589b59a415cb16688f
+            2fb39b617d6efbfef7e94963bcbb3634fd1b231b
+          do
+            curl -fsSL \
+              -H "Accept: application/vnd.github+json" \
+              -H "Authorization: Bearer $GH_TOKEN" \
+              -H "X-GitHub-Api-Version: 2022-11-28" \
+              "https://api.github.com/repos/${{ github.repository }}/git/blobs/$sha" \
+              | jq -r '.content' \
+              | base64 -d >> NeonDistrict.apk
+          done
           echo "$APK_SHA256  NeonDistrict.apk" | sha256sum -c -
 
       - name: Publish APK and activate update
         run: |
           jq -n \
-            --arg apk_url "https://raw.githubusercontent.com/zinovykargman-commits/Sigma-releases/main/NeonDistrict.apk?v=0.3.0" \
+            --arg apk_url "https://raw.githubusercontent.com/zinovykargman-commits/Sigma-releases/main/NeonDistrict.apk?v=0.3.1" \
             --arg sha256 "$APK_SHA256" \
             '{
-              version_code: 7,
-              version_name: "0.3.0",
+              version_code: 8,
+              version_name: "0.3.1",
               apk_url: $apk_url,
               sha256: $sha256,
-              notes: "City-life and graphics update: 100 named buildings, homes, jobs, shifts, expanded needs, animated citizens, traffic, weather, and day/night lighting. Existing saves are preserved."
+              notes: "Hotfix: restores correct building placement across the full city, keeps the updater version synchronized, and adds release-blocking layout/version checks. Existing saves are preserved."
             }' > latest.json
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -- NeonDistrict.apk latest.json
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "Publish and activate Neon District 0.3.0"
+          git commit -m "Publish and activate Neon District 0.3.1"
           git push origin HEAD:main
