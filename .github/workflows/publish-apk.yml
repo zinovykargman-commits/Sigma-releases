@@ -32,7 +32,7 @@ jobs:
       - name: Publish APK and activate update
         run: |
           jq -n \
-            --arg apk_url "https://raw.githubusercontent.com/zinovykargman-commits/Sigma-releases/main/NeonDistrict.apk" \
+            --arg apk_url "https://raw.githubusercontent.com/zinovykargman-commits/Sigma-releases/main/NeonDistrict.apk?v=0.2.0" \
             --arg sha256 "$APK_SHA256" \
             '{
               version_code: 5,
