@@ -1,7 +1,7 @@
 {
-  "version_code": 7,
-  "version_name": "0.3.0",
-  "apk_url": "https://raw.githubusercontent.com/zinovykargman-commits/Sigma-releases/main/NeonDistrict.apk?v=0.3.0",
-  "sha256": "ad6de691ddbec55b0ea03e8fa8eda962bc3941b564b939881820ce551c6bdc93",
-  "notes": "City-life and graphics update: 100 named buildings, homes, jobs, shifts, expanded needs, animated citizens, traffic, weather, and day/night lighting. Existing saves are preserved."
+  "version_code": 8,
+  "version_name": "0.3.1",
+  "apk_url": "https://raw.githubusercontent.com/zinovykargman-commits/Sigma-releases/main/NeonDistrict.apk?v=0.3.1",
+  "sha256": "2d094d37ba5f61104c12cea175af574333d233d3a8cd6c165948486eddfc0e68",
+  "notes": "Hotfix: restores correct building placement across the full city, keeps the updater version synchronized, and adds release-blocking layout/version checks. Existing saves are preserved."
 }
