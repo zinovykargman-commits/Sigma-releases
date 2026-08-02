@@ -14,36 +14,36 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    env:
+      APK_ARCHIVE_URL: 'https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-c91c-822f-bbbc-5ae534729095/raw?se=2026-08-02T01:47:15Z&sp=r&sv=2026-02-06&sr=b&scid=3e229f2f-0773-4e3a-b8c5-7a7e8b447279&skoid=bbd22fc4-f881-4ea4-b2f3-c12033cf6a8b&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-08-01T13:12:10Z&ske=2026-08-02T13:12:10Z&sks=b&skv=2026-02-06&sig=B8UwQrmkaM%2BG5hbem10%2BfRUe%2BbuYT/zsGx6%2B%2B5Rfv58%3D'
+      APK_ARCHIVE_SHA256: daad4e2fc2ac0690619c9c3f67b8e00176eeed060281139691faa6f0a4d22c75
+      APK_SHA256: ad6de691ddbec55b0ea03e8fa8eda962bc3941b564b939881820ce551c6bdc93
     steps:
       - name: Check out release repository
         uses: actions/checkout@v5
 
-      - name: Download and verify signed v0.2.1
-        env:
-          APK_ARCHIVE_URL: 'https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-1568-822f-9888-28be40632b00/raw?se=2026-08-02T01:13:32Z&sp=r&sv=2026-02-06&sr=b&scid=e2e51c3f-7343-40d6-8ea3-c1a76602756b&skoid=bbd22fc4-f881-4ea4-b2f3-c12033cf6a8b&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-08-01T23:53:52Z&ske=2026-08-03T23:53:52Z&sks=b&skv=2026-02-06&sig=jNjW7nrZWfI6WdjJJLm84jxw436qVlvmkPDpOFZ2Lgw%3D'
-          APK_ARCHIVE_SHA256: b3ebefb5b8db448a50d38e33d543a60c3873a72aa1ab3157bf13bcf06bfdfb61
-          APK_SHA256: 7ce59bb2831b88b820afa844ebab87bdcba97f8fbf0a01332b2d476f23dd27ae
+      - name: Download and verify signed v0.3.0
         run: |
-          curl -L --fail --retry 3 "$APK_ARCHIVE_URL" -o /tmp/NeonDistrict-v0.2.1.zip
-          echo "$APK_ARCHIVE_SHA256  /tmp/NeonDistrict-v0.2.1.zip" | sha256sum -c -
-          unzip -o /tmp/NeonDistrict-v0.2.1.zip NeonDistrict.apk
+          curl -L --fail --retry 3 "$APK_ARCHIVE_URL" -o /tmp/NeonDistrict-v0.3.0.zip
+          echo "$APK_ARCHIVE_SHA256  /tmp/NeonDistrict-v0.3.0.zip" | sha256sum -c -
+          unzip -o /tmp/NeonDistrict-v0.3.0.zip NeonDistrict.apk
           echo "$APK_SHA256  NeonDistrict.apk" | sha256sum -c -
 
       - name: Publish APK and activate update
         run: |
           jq -n \
-            --arg apk_url "https://raw.githubusercontent.com/zinovykargman-commits/Sigma-releases/main/NeonDistrict.apk?v=0.2.1" \
+            --arg apk_url "https://raw.githubusercontent.com/zinovykargman-commits/Sigma-releases/main/NeonDistrict.apk?v=0.3.0" \
             --arg sha256 "$APK_SHA256" \
             '{
-              version_code: 6,
-              version_name: "0.2.1",
+              version_code: 7,
+              version_name: "0.3.0",
               apk_url: $apk_url,
               sha256: $sha256,
-              notes: "Fix Android HUD buttons and keep commuters on road routes. Existing city saves are preserved."
+              notes: "City-life and graphics update: 100 named buildings, homes, jobs, shifts, expanded needs, animated citizens, traffic, weather, and day/night lighting. Existing saves are preserved."
             }' > latest.json
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -- NeonDistrict.apk latest.json
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "Publish and activate Neon District 0.2.1"
+          git commit -m "Publish and activate Neon District 0.3.0"
           git push origin HEAD:main
