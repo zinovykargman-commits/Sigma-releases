@@ -1,7 +1,7 @@
 {
-  "version_code": 12,
-  "version_name": "0.5.0",
-  "apk_url": "https://raw.githubusercontent.com/zinovykargman-commits/Sigma-releases/main/NeonDistrict.apk?v=0.5.0",
-  "sha256": "9f1832ad313c33874374676645aecda33a82b2bf07b6fcc89de02121322d5891",
-  "notes": "Major city and jobs update: five larger corporate headquarters now form the central Corporate Crown, surrounded by the Neon Ring, Residential Belt, Industrial Rim, and Civic Network. Weekly corporate hiring fills exactly 280 graded positions across five companies through promotions, transfers, reassignments, and unemployed competition, then schedules 200 competitive part-time shifts. Corporate grades now affect income, differentiated apartment rents remain active, and the weekly money-entry cap remains 25,000 credits. Existing saves, citizen identities, balances, homes, building identities, Android package identity, and signing identity are preserved through the schema 4 migration. The release passed all static checks, a clean Godot boot, hiring/migration/economy runtime tests, CI export, and manual review of all four 1920x1080 CI screenshots."
+  "version_code": 13,
+  "version_name": "0.6.0",
+  "apk_url": "https://raw.githubusercontent.com/zinovykargman-commits/Sigma-releases/main/NeonDistrict.apk?v=0.6.0",
+  "sha256": "93639175bf4be012b51025e93a7a3cc45e91ef16856f63da86d31ed0cc5ffbc6",
+  "notes": "True city visual revamp: the authored city now spans a 12x12 block canvas with deliberate plazas, yards, courtyards, stronger street hierarchy, district atmosphere, and distinct building families. Five enlarged, individually silhouetted corporate towers form the central Corporate Crown around a neon plaza. Corporate hiring, 280 positions, 200 competitive part-time shifts, apartment tiers, weekly money-entry limits, stable building IDs, interiors, and existing citizen/economy saves remain intact through the schema 5 migration. The release passed every static contract, clean Godot boot, hiring/economy/migration runtime test, CI visual interaction checkpoint, signed Android export, and manual screenshot review."
 }
