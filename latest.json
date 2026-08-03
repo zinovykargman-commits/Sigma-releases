@@ -1,7 +1,7 @@
 {
-  "version_code": 11,
-  "version_name": "0.4.1",
-  "apk_url": "https://raw.githubusercontent.com/zinovykargman-commits/Sigma-releases/main/NeonDistrict.apk?v=0.4.1",
-  "sha256": "a3f840d8164ea44be98ae2e658855ed8d08a84cb849cb50e9cf9bc043dcdffd0",
-  "notes": "Hotfix: restores startup after the v0.4.0 blank-screen failure, keeps building cutaways and indoor citizen selection visible, fixes the bottom economy status panel, and raises each corporate building to 60-person capacity. The release passed a clean Godot boot, automated interaction checks, and manual review of four 1920x1080 screenshots. Existing saves, package identity, and signing identity are preserved."
+  "version_code": 12,
+  "version_name": "0.5.0",
+  "apk_url": "https://raw.githubusercontent.com/zinovykargman-commits/Sigma-releases/main/NeonDistrict.apk?v=0.5.0",
+  "sha256": "9f1832ad313c33874374676645aecda33a82b2bf07b6fcc89de02121322d5891",
+  "notes": "Major city and jobs update: five larger corporate headquarters now form the central Corporate Crown, surrounded by the Neon Ring, Residential Belt, Industrial Rim, and Civic Network. Weekly corporate hiring fills exactly 280 graded positions across five companies through promotions, transfers, reassignments, and unemployed competition, then schedules 200 competitive part-time shifts. Corporate grades now affect income, differentiated apartment rents remain active, and the weekly money-entry cap remains 25,000 credits. Existing saves, citizen identities, balances, homes, building identities, Android package identity, and signing identity are preserved through the schema 4 migration. The release passed all static checks, a clean Godot boot, hiring/migration/economy runtime tests, CI export, and manual review of all four 1920x1080 CI screenshots."
 }
