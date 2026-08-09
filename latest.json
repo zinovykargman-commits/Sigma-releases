@@ -1,7 +1,7 @@
 {
-  "version_code": 13,
-  "version_name": "0.6.0",
-  "apk_url": "https://raw.githubusercontent.com/zinovykargman-commits/Sigma-releases/main/NeonDistrict.apk?v=0.6.0",
-  "sha256": "93639175bf4be012b51025e93a7a3cc45e91ef16856f63da86d31ed0cc5ffbc6",
-  "notes": "True city visual revamp: the authored city now spans a 12x12 block canvas with deliberate plazas, yards, courtyards, stronger street hierarchy, district atmosphere, and distinct building families. Five enlarged, individually silhouetted corporate towers form the central Corporate Crown around a neon plaza. Corporate hiring, 280 positions, 200 competitive part-time shifts, apartment tiers, weekly money-entry limits, stable building IDs, interiors, and existing citizen/economy saves remain intact through the schema 5 migration. The release passed every static contract, clean Godot boot, hiring/economy/migration runtime test, CI visual interaction checkpoint, signed Android export, and manual screenshot review."
+  "version_code": 14,
+  "version_name": "0.7.0",
+  "apk_url": "https://raw.githubusercontent.com/zinovykargman-commits/Sigma-releases/main/NeonDistrict.apk?v=0.7.0",
+  "sha256": "e918f66ca7890291862481adf4d6893f5354ab7cb1a8fe26015cb53b27b62a49",
+  "notes": "Neural Lives: link one citizen, read their CityNet dossier, inspect employment, money, housing, weekly economy snapshots, and event history, then set a safe neural training plan across seven broad career tracks. Neural aptitudes, skill gains, costs, energy, weekly resolution, and training history persist through save schema 6 while the other 299 citizens continue autonomously. The release passed static contracts, Android runtime smoke, CityNet interaction smoke, visual checkpoints, signed export, and checksum verification."
 }
